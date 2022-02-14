@@ -1,0 +1,898 @@
+\section{\(R^{3}\)における等式拘束条件付き極値問題} \label{section:1}
+
+\subsection{問題}
+
+\(\bigtriangleup{ABC}\) において、各頂点と向かい合う辺の長さをそれぞれ\(a,b,c\)とする。
+また、各辺の長さの和を\(2\ell\)
+(すなわち、\(a + b + c = 2 \ell\)、\(\ell\)は各辺の長さの和の半分)とする。
+さらに、\(\bigtriangleup{ABC}\)の面積\(S\)の\(2\)乗を\(J\)とすると、
+\begin{equation}\label{equation:1_1}
+  J = S^{2} = \ell \left(\ell - a\right) \left(\ell - b\right) \left(\ell - c\right)
+\end{equation}
+で与えられる。
+以下の問に答えなさい。
+
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\begin{enumerate}
+  \item (\ref{equation:1_1})式が成り立つことを示しなさい。
+  \item \(\bm{x} = \begin{bmatrix}a\\b\\c\\ \end{bmatrix} \in R^{3}\)とする。
+  このとき、三角形の辺の長さの和が一定(\(a + b + c = 2 \ell\)、一定)である三角形のうち、
+  その面積(の2乗)が最大となる\(\bm{x}\)を求め、そのときの三角形はどのようなものであるか
+  理由を添えて説明しなさい。
+\end{enumerate}
+
+\subsection{回答}
+
+\begin{enumerate}
+  \item 面積公式より、
+  \begin{equation}\label{equation:1_1_a_1}
+    S = \frac{1}{2} a b \sin{C}
+  \end{equation}
+  となる。\(\sin^2 C + \cos^2 C = 1\)を用いて\(\sin\)を\(\cos\)に直すと、
+  \begin{equation}\label{equation:1_1_a_2}
+    S = \frac{1}{2} a b \sqrt{1 - cos^2 C}
+  \end{equation}
+  となる。余弦定理より\(\cos C = \frac{a^2 + b^2 - c^2}{2ab}\)なので、
+  \begin{equation}\label{equation:1_1_a_3}
+    S = \frac{1}{2} a b \sqrt{1 - \left(\frac{a^2 + b^2 - c^2}{2ab}\right)^2}
+  \end{equation}
+  (\ref{equation:1_1_a_3})式を変形すると、
+  \begin{equation}\label{equation:1_1_a_4}
+    \begin{split}
+      S &= \frac{1}{2} a b \sqrt{1 - \left(\frac{a^2 + b^2 - c^2}{2ab}\right)^2}\\
+        &= \frac{1}{2} a b \sqrt{\frac{(2ab)^2 - (a^2 + b^2 - c^2)^2}{(2ab)^2}}\\
+        &= \frac{1}{4} \sqrt{(2ab)^2 - (a^2 + b^2 - c^2)^2}\\
+        &= \frac{1}{4} \sqrt{(2ab + a^2 + b^2 - c^2) (2ab - a^2 - b^2 + c^2)}\\
+        &= \frac{1}{4} \sqrt{((a + b)^2 - c^2) (c^2 - (a - b)^2)}\\
+        &= \frac{1}{4} \sqrt{(a + b + c)(a + b - c)(a - b + c)(-a + b + c)}\\
+        &= \sqrt{\frac{a + b + c}{2}\cdot\frac{a + b - c}{2}\cdot\frac{a - b + c}{2}\cdot\frac{-a + b + c}{2}}\\
+    \end{split}
+  \end{equation}
+  条件より、\(\ell = \frac{a + b + c}{2}\)なので、
+  \begin{equation}\label{equation:1_1_a_5}
+    S = \sqrt{\ell \cdot \left(\ell - a\right) \cdot \left(\ell - b\right) \cdot \left(\ell - c\right)}
+  \end{equation}
+  両辺を2乗すると、
+  \begin{equation}\label{equation:1_1_a_6}
+    J = S^2 = \ell \cdot \left(\ell - a\right) \cdot \left(\ell - b\right) \cdot \left(\ell - c\right)
+  \end{equation}
+  よって、(\ref{equation:1_1})式が成り立つことを示せた。
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=60mm]{./image/dai1.png}
+    \caption{各頂点と向かい合う辺の長さをそれぞれ\(a,b,c\)とする\(\bigtriangleup{ABC}\)}
+    \label{figure:dai1}
+  \end{figure}
+
+  % \item \(2 \ell = a + b + c\)より、
+  % \begin{equation}\label{equation:1_2_a_1}
+  %   c = 2 \ell - \left(a + b\right)
+  % \end{equation}
+  % であり、(\ref{equation:1_2_a_1})式より、
+  % \begin{equation}\label{equation:1_2_a_2}
+  %   J = \ell \cdot \left(\ell - a\right) \cdot \left(\ell - b\right) \cdot \left(a + b - \ell\right)
+  % \end{equation}
+  % ここで、\(\bm{x} = \begin{bmatrix}a\\b\\c\\ \end{bmatrix} \in R^{3}\)に対して、
+  % 汎関数
+  % \begin{equation}\label{equation:1_2_a_3}
+  %   J\left(\bm{x}\right) = \ell \cdot \left(\ell - a\right) \cdot \left(\ell - b\right) \cdot \left(a + b - \ell\right)
+  % \end{equation}
+  % の方向微分を計算する。\\
+  % \(\bm{x} = \begin{bmatrix}a\\b\\c\\ \end{bmatrix} \in R^{3}\)なので、
+  % \(\bm{h} = \begin{bmatrix}h_{a}\\h_{b}\\h_{c}\\ \end{bmatrix} \in R^{3}\)と置く。
+  % このとき、
+  % \begin{equation}\label{equation:1_2_a_4}
+  %   \bm{x} + \beta \bm{h} =
+  %   \begin{bmatrix}
+  %     a + \beta h_{a}\\
+  %     b + \beta h_{b}\\
+  %     c + \beta h_{c}\\
+  %   \end{bmatrix} \in R^{3}
+  % \end{equation}
+  % とする。\\
+  % すなわち、\(a\)は\(a + \beta h_{a}\)と増加し、
+  % \(b\)は\(b + \beta h_{b}\)と増加し、
+  % \(c\)は\(c + \beta h_{c}\)と増加する。\\
+  % したがって、(\ref{equation:1_2_a_2})式より、
+  % \begin{equation}
+  %   J\left(\bm{x}\right) = \ell \cdot \left(\ell - a - \beta h_{a}\right) \cdot \left(\ell - b - \beta h_{b}\right) \cdot \left(a + \beta h_{a} + b + \beta h_{b}- \ell\right)
+  % \end{equation}
+
+  \item ラグランジュの未定乗数\(\lambda\)を導入し、
+  汎関数\(L\left(\ell, \lambda\right)\)を定義すると、
+  \begin{equation}\label{equation:1_2_a_1}
+    L\left(a, b, c, \lambda\right) =
+    \ell \left(\ell - a\right) \left(\ell - b\right) \left(\ell - c\right)
+    - \lambda \left(a + b + c - 2 \ell\right)
+  \end{equation}
+  \(L\left(a, b, c, \lambda\right)\)の偏微分をそれぞれ求めて、極値を求める。
+  \begin{equation}\label{equation:1_2_a_2}
+    \left\{
+    \begin{split}
+      &\frac{dL}{da} = \ell (-1)    (\ell - b) (\ell - c) - \lambda (-1) = -\ell (\ell - b) (\ell - c) + \lambda = 0\\
+      &\frac{dL}{db} = \ell (\ell - a) (-1)    (\ell - c) - \lambda (-1) = -\ell (\ell - a) (\ell - c) + \lambda = 0\\
+      &\frac{dL}{dc} = \ell (\ell - a) (\ell - b) (-1)    - \lambda (-1) = -\ell (\ell - a) (\ell - b) + \lambda = 0\\
+      &\frac{dL}{d\lambda} = - \left(a + b + c - 2 \ell\right) = 0\\
+    \end{split}
+    \right.
+  \end{equation}
+  この連立方程式を解く。
+  \begin{equation}\label{equation:1_2_a_3}
+    \left\{
+    \begin{split}
+      \ell (\ell - b) (\ell - c) - \lambda = 0\\
+      \ell (\ell - a) (\ell - c) - \lambda = 0\\
+      \ell (\ell - a) (\ell - b) - \lambda = 0\\
+      a + b + c = 2 \ell
+    \end{split}
+    \right.
+  \end{equation}
+  \begin{equation}\label{equation:1_2_a_4}
+    \left\{
+    \begin{split}
+      \ell (\ell - b) (a + b - \ell) - \lambda = 0 \Leftrightarrow (\ell - b) (a + b - \ell) = \frac{\lambda}{\ell} \\
+      \ell (\ell - a) (a + b - \ell) - \lambda = 0 \Leftrightarrow (\ell - a) (a + b - \ell) = \frac{\lambda}{\ell} \\
+      \ell (\ell - a) (\ell - b) - \lambda = 0 \Leftrightarrow (\ell - a) (\ell - b) = \frac{\lambda}{\ell}
+    \end{split}
+    \right.
+  \end{equation}
+  \begin{equation}\label{equation:1_2_a_5}
+    \left\{
+    \begin{split}
+      (\ell - b) (a + b - \ell) = (\ell - a) (\ell - b) \Leftrightarrow a + b - \ell = \ell - a \Leftrightarrow b = 2 \ell - 2a\\
+      (\ell - a) (a + b - \ell) = (\ell - a) (\ell - b) \Leftrightarrow a + b - \ell = \ell - b \Leftrightarrow a = 2 \ell - 2b\\
+    \end{split}
+    \right.
+  \end{equation}
+  よって、(\ref{equation:1_2_a_5})式より、
+  \begin{equation}\label{equation:1_2_a_6}
+    \left\{
+    \begin{split}
+      &a = 2 \ell - 2 \left(2\ell - 2a\right) \Leftrightarrow 3a = 2\ell \Leftrightarrow a = \frac{2}{3} \ell \\
+      &b = 2 \ell - 2 \cdot \frac{2}{3} \ell = \frac{2}{3} \ell\\
+      &c = 2 \ell - a - b = 2 \ell - \frac{2}{3} \ell - \frac{2}{3} \ell = \frac{2}{3} \ell
+    \end{split}
+    \right.
+  \end{equation}
+  % \begin{equation}\label{equation:1_2_a_6}
+  %   \begin{split}
+  %     a = 2 \ell - 2 \left(2\ell - 2a\right)
+  %     & \Leftrightarrow 3a = 2\ell \\
+  %     & \Leftrightarrow a = \frac{2}{3} \ell
+  %   \end{split}
+  % \end{equation}
+  % \begin{equation}\label{equation:1_2_a_7}
+  %   b = 2 \ell - 2 \cdot \frac{2}{3} \ell = \frac{2}{3} \ell
+  % \end{equation}
+  % \begin{equation}\label{equation:1_2_a_8}
+  %   c = 2 \ell - a - b = 2 \ell - \frac{2}{3} \ell - \frac{2}{3} \ell = \frac{2}{3} \ell
+  % \end{equation}
+  したがって、面積が最大となる\(a, b, c\)は
+  \begin{equation}
+    a = b = c = \frac{2}{3} \ell
+  \end{equation}
+  であり、このときの三角形は、全ての辺が等しい正三角形である。
+
+  % \begin{equation}
+  %   \begin{split}
+  %     & (\ell - b) (\ell - c) = (\ell - a) (\ell - c) \\
+  %     \Leftrightarrow & \ell^2 - (b + c) \ell + bc = \ell^2 - (a + c) \ell + ac \\
+  %     \Leftrightarrow & -(b + c) \ell + bc = -(a + c) \ell + ac \\
+  %     \Leftrightarrow & (b + c) \ell - bc = (a + c) \ell - ac \\
+  %     \Leftrightarrow & (b - a) \ell = (b - a)c \\
+  %     \Leftrightarrow & (b - a) \ell = (b - a) (2\ell -a -b) \\
+  %     \Leftrightarrow & b = 3\ell - a \\
+  %   \end{split}
+  % \end{equation}
+  % \begin{equation}
+  %   \begin{split}
+  %     & (\ell - b) (\ell - c) = (\ell - a) (\ell - b) \\
+  %     \Leftrightarrow & \ell^2 - (b + c) \ell + bc = \ell^2 - (a + b) \ell + ab \\
+  %     \Leftrightarrow & -(b + c) \ell + bc = -(a + b) \ell + ab \\
+  %     \Leftrightarrow & (b + c) \ell - bc = (a + b) \ell - ab \\
+  %     \Leftrightarrow & (c - a) \ell = (c - a)b \\
+  %     \Leftrightarrow & (c - a) \ell = (c - a) (2\ell -a -c) \\
+  %     \Leftrightarrow & c = 3\ell - a \\
+  %   \end{split}
+  % \end{equation}
+  % \begin{equation}
+  %   \begin{split}
+  %     & a + b + c = 2 \ell \\
+  %     \Leftrightarrow & a + (3\ell - a) + (3\ell - a) = 2 \ell \\
+  %     \Leftrightarrow & -a = -4 \ell \\
+  %   \end{split}
+  % \end{equation}
+
+
+
+  % 相加平均と相乗平均の大小関係より、
+  % \begin{equation}\label{equation:1_2_a_1}
+  %   \begin{split}
+  %     \frac{x + y + z}{3} \geq \sqrt[3]{xyz}\\
+  %     \left(x = y = zのとき、等号が成立\right)
+  %   \end{split}
+  % \end{equation}
+  % 両辺を3乗すると、
+  % \begin{equation}\label{equation:1_2_a_2}
+  %   \left(\frac{x + y + z}{3}\right)^3 \geq xyz
+  % \end{equation}
+  % (\ref{equation:1_1_a_4})式より、
+  % \(x = \ell - a, y = \ell - b, z = \ell - c\)として、
+  % (\ref{equation:1_2_a_1})式に代入すると、
+  % \begin{equation}\label{equation:1_2_a_3}
+  %   \left(\frac{(\ell - a) + (\ell - b) + (\ell - c)}{3}\right)^3 \geq (\ell - a)(\ell - b)(\ell - c)
+  % \end{equation}
+  % (\ref{equation:1_2_a_2})式の両辺に\(\ell\)を掛ける。
+  % \begin{equation}\label{equation:1_2_a_4}
+  %   \ell \left(\frac{(\ell - a) + (\ell - b) + (\ell - c)}{3}\right)^3 \geq \ell(\ell - a)(\ell - b)(\ell - c)
+  % \end{equation}
+  % (\ref{equation:1_1_a_4})、(\ref{equation:1_2_a_2})と
+  % \((\ell - a) + (\ell - b) + (\ell - c) = 3 \ell - L = \frac{L}{2}\)より、
+  % \begin{equation}\label{equation:1_2_a_5}
+  %   S^{2} \leq \frac{L}{2} \left(\frac{L}{6}\right)^{3} = \frac{L^{4}}{432}
+  % \end{equation}
+  % これより、
+  % \begin{equation}
+  %   S \leq \frac{L^{2}}{12 \sqrt{3}}
+  % \end{equation}
+  % 等号は、\(s - a = s - b = s - c\)
+  % であり、\(a = b = c\)のとき成立する。\\
+  % つまり、三角形が正三角形のとき、三角形の面積が最大になる
+\end{enumerate}
+
+\newpage
+
+\section{\(L_{2}\)における等式拘束条件付き極値問題} \label{section:2}
+
+\subsection{問題}
+
+図\ref{figure:2_1}に示すように、\(xy\)平面内で、
+一定の長さ\(\ell\)、線密度を\(\rho\)(一定)の伸び縮みしない
+一様なひもの両端が点\(A\left(x_{0}, y_{0}\right)\),
+\(B\left(x_{1}, y_{1}\right)\)で固定され、
+重力の作用で垂れ下がっている。
+このときのひもの形状をあらわす曲線\(y\)を求める問題を考える。
+以下の問に答えなさい。
+
+\begin{enumerate}
+  \item 題意より、与えられたひもが一定の長さ\(\ell\)であることから、
+  \begin{equation}\label{equation:2_1}
+    G \left(y, y^{\prime}\right) = \int_{x_{0}}^{x_{1}} \sqrt{1 + \left(y^{\prime}\right)^2} dx - \ell = 0
+  \end{equation}
+  が成り立つことを示しなさい。
+
+  \item ひものポテンシャルエネルギー
+  \(F\left(y, y^{\prime}\right)\)は、
+  \begin{equation}\label{equation:2_2}
+    F\left(y, y^{\prime}\right) = \rho g \int_{x_{0}}^{x_{1}} y \sqrt{1 + \left(y^{\prime}\right)^2} dx
+  \end{equation}
+  であることを示しなさい。
+
+  \item ひもが重力の作用で垂れ下がって平衡状態にあるときは、
+  ひものポテンシャルエネルギーが最小の状態にあることが分かっている(最小原理)。
+  そこで、(\ref{equation:2_1})式の\(G \left(y, y^{\prime}\right) = 0\)
+  を等式拘束条件をみなし、(\ref{equation:2_2})式の
+  \(F\left(y, y^{\prime}\right)\)
+  を最小にする\(y \in L_{2} \left[x_{0}, y_{0}\right]\)
+  を求めることを考える。
+  このとき、(\ref{equation:2_1})式の被積分関数
+  \(\sqrt{1 + \left(y^{\prime}\right)^{2}}\)や
+  (\ref{equation:2_2})式の被積分関数
+  \(y \sqrt{1 + \left(y^{\prime}\right)^{2}}\)が
+  \(x\)を陽に含まないことを考慮にいれると、求める\(y\)は
+  \begin{equation}\label{equation:2_3_1}
+     \int_{x_{0}}^{x_{1}} \sqrt{1 + \left(y^{\prime}\right)^{2}} dx = \ell
+    \qquad\quad(拘束条件)
+  \end{equation}
+  および
+  \begin{equation}\label{equation:2_3_2}
+    \begin{split}
+      \rho g \frac{y}{\sqrt{1 + \left(y^{\prime}\right)^{2}}} - \frac{\lambda}{\sqrt{1 + \left(y^{\prime}\right)^{2}}} = c \\
+      (cは定数。\lambda はラグランジュの未定乗数)
+    \end{split}
+  \end{equation}
+  を満足する。(\ref{equation:2_3_2})式が成り立つことを示しなさい。
+
+  \item (\ref{equation:2_3_2})式の解(一般解)を求めるために、媒介変数\(t\)を用いて
+  \begin{gather} \label{equation:2_4_1}
+    y^{\prime} = \frac{\mathrm{d}y}{\mathrm{d}x} = \sinh t \\ \nonumber
+    \left(\sinh は双曲線関数の1つハイパボリックサインを表す\right) \nonumber
+  \end{gather}
+  と変数変換する。媒介変数による微分の公式を利用することで、
+  \begin{equation} \label{equation:2_4_2}
+    x = \frac{c}{\rho g} t + c_{1}
+    \qquad\quad(c_{1}は任意定数)
+  \end{equation}
+  が成り立つことを示しなさい。
+  さらに、(\ref{equation:2_4_1})式および(\ref{equation:2_3_2})式を用いて、
+  求める\(y\)(一般解)は
+  \begin{equation} \label{equation:2_4_3}
+    y = \frac{\lambda}{\rho g} + \frac{c}{\rho g} \cosh \left(\frac{\rho g}{c} \left(x - c_{1}\right)\right)
+    \left(\cosh は双曲線関数の1つハイパボリックコサインを表す\right)
+  \end{equation}
+  であることを示しなさい。
+\end{enumerate}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=80mm]{./image/dai2_figure_a.png}
+  \caption{}
+  \label{figure:2_1}
+\end{figure}
+
+\subsection{回答}
+
+\begin{enumerate}
+  \item 点\(AB\)間を微小空間で区切ると、
+  微小空間の長さは
+  \begin{equation}\label{equation:2_1_a_1}
+    ds = \sqrt[]{dx^{2} + dy^{2}} = dx \sqrt[]{1 + \left(\frac{dy}{dx}\right)^{2}}
+  \end{equation}
+  である。
+  全体のひもの長さは区間全体で積分すると求められる。
+  \begin{equation}\label{equation:2_1_a_2}
+    \begin{split}
+      G\left(x, y\right) &= \int^{B}_{A} ds \\
+      &= \int^{B}_{A} \sqrt{dx^{2} + dy^{2}}\\
+      &= \int^{x_{1}}_{x_{0}} \sqrt[]{1 + \left(\frac{dy}{dx}\right)^{2}} dx\\
+      &= \int^{x_{1}}_{x_{0}} \sqrt[]{1 + \left(y^{\prime}\right)^{2}} dx\\
+    \end{split}
+  \end{equation}
+  与えられたひもは伸び縮みせず、長さが\(\ell\)であるので、
+  \begin{equation}\label{equation:2_1_a_3}
+    G\left(y, y^{\prime}\right) = \int^{x_{1}}_{x_{0}} \sqrt[]{1 + \left(y^{\prime}\right)^{2}} dx - \ell = 0
+  \end{equation}
+  という等式が成り立つ。
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=50mm]{./image/diff_a.png}
+    \caption{}
+    \label{figure:2_1_a}
+  \end{figure}
+
+  \item 微小空間の質量は、
+  \begin{equation}\label{equation:2_2_a_1}
+    \begin{split}
+      \rho \cdot ds
+    \end{split}
+  \end{equation}
+  微小空間にかかる重力は、重力加速度\(g\)を用いて表すと、
+  \begin{equation}\label{equation:2_2_a_2}
+    \rho \cdot g \cdot ds
+  \end{equation}
+  任意の位置\(y\)における微小空間の位置エネルギーは、
+  \begin{equation}\label{equation:2_2_a_3}
+    \rho \cdot g \cdot y \cdot ds
+  \end{equation}
+  区間\(A\)から\(B\)まで積分すれば、
+  位置エネルギー\(F\left(y, y^{\prime}\right)\)を求められる。
+  \begin{equation}\label{equation:2_2_a_4}
+    \begin{split}
+      F\left(y, y^{\prime}\right) &= \rho g \int^{B}_{A} y ds \\
+      &= \rho g \int^{x_1}_{x_0} y \sqrt{1 + \left(y^{\prime}\right)^2} dx
+    \end{split}
+  \end{equation}
+
+  \item (\ref{equation:2_1_a_3})式、(\ref{equation:2_2_a_4})式より、
+  ラグランジュの未定乗数\(\lambda\)を導入し、
+  汎関数\(L \left(y, y^{\prime}, \lambda\right)\)を定義すると、
+  \begin{equation}
+    \begin{split}
+      L \left(y, y^{\prime}, \lambda\right)
+      &= \rho g \int^{x_1}_{x_0} y \sqrt{1 + \left(y^{\prime}\right)^2} dx -
+      \lambda \left(\int^{x_{1}}_{x_{0}} \sqrt{1 + \left(y^{\prime}\right)^{2}} dx - \ell\right) \\
+      &= \int^{x_1}_{x_0} \left(\rho g y \sqrt{1 + \left(y^{\prime}\right)^2} -
+      \lambda \sqrt{1 + \left(y^{\prime}\right)^{2}}\right) dx + \lambda \ell
+    \end{split}
+  \end{equation}
+  である。\\
+  ここで、汎関数\(L \left(y, y^{\prime}, \lambda\right)\)の
+  被積分関数\(\hat{L} \left(y, y^{\prime}, \lambda\right)\)を
+  \begin{equation}
+    \hat{L} \left(y, y^{\prime}, \lambda\right) =
+    \rho g y \sqrt{1 + \left(y^{\prime}\right)^2} -
+    \lambda \sqrt{1 + \left(y^{\prime}\right)^{2}}
+  \end{equation}
+  と置く。\\
+  \(\hat{L} \left(y, y^{\prime}, \lambda\right)\)は\(x\)を陽に含まないので、
+  \begin{equation}
+    \hat{L} \left(y, y^{\prime}, \lambda\right) - y^{\prime} \frac{\partial \hat{L} \left(y, y^{\prime}, \lambda\right)}{\partial y^{\prime}} = c
+    \quad\quad\left(c は定数\right)
+  \end{equation}
+  であるという方程式を満たす。
+  この方程式を解くと、
+  \begin{align}
+      & \hat{L} \left(y, y^{\prime}, \lambda\right) - y^{\prime} \frac{\partial \hat{L} \left(y, y^{\prime}, \lambda\right)}{\partial y^{\prime}} = c \notag\\
+      \Leftrightarrow & \rho g y \sqrt{1 + \left(y^{\prime}\right)^2} - \lambda \sqrt{1 + \left(y^{\prime}\right)^{2}}
+      - \left(\rho g y \frac{\left(y^{\prime}\right)^2}{\sqrt{1 + \left(y^{\prime}\right)^2}} - \lambda \frac{\left(y^{\prime}\right)^2}{\sqrt{1 + \left(y^{\prime}\right)^2}}\right) = c \notag\\
+      \Leftrightarrow & \rho g \frac{y}{\sqrt{1 + \left(y^{\prime}\right)^2}} - \frac{\lambda}{\sqrt{1 + \left(y^{\prime}\right)^2}} = c
+  \end{align}
+  よって、(\ref{equation:2_3_2})式が成り立つことを示せた。
+  % オイラー=ラグランジュ方程式を用いて、
+  % \begin{equation}
+  %   \begin{split}
+  %     \frac{\partial L}{\partial x} = \frac{\partial \hat{L}}{\partial y} - \frac{d}{dx} \left(\frac{\partial \hat{L}}{\partial y^{\prime}}\right) = 0
+  %   \end{split}
+  % \end{equation}
+  % を求める。これを変形すると、
+  % \begin{equation}\label{equation:2_3_a_8}
+  %   \begin{split}
+  %     & \frac{\partial \hat{L}}{\partial y} - \frac{d}{dx} \left(\frac{\partial \hat{L}}{\partial y^{\prime}}\right) = 0 \\
+  %     \Leftrightarrow & \frac{d}{dx} \left(\frac{\partial \hat{L}}{\partial y^{\prime}}\right) = \frac{\partial \hat{L}}{\partial y} \\
+  %     \Leftrightarrow & \frac{d}{dx} \left(\rho g \frac{y y^{\prime}}{\sqrt{1 + \left(y^{\prime}\right)^2}} - \frac{\lambda y^{\prime}}{\sqrt{1 + \left(y^{\prime}\right)^2}}\right) = \rho g \sqrt{1 + \left(y^{\prime}\right)^2} \\
+  %     \Leftrightarrow & \rho g \frac{y y^{\prime}}{\sqrt{1 + \left(y^{\prime}\right)^2}} - \frac{\lambda y^{\prime}}{\sqrt{1 + \left(y^{\prime}\right)^2}} = c \\
+  %     & \left(c は積分定数\right)\\
+  %     \Leftrightarrow & \rho g \frac{y}{\sqrt{1 + \left(y^{\prime}\right)^2}} - \frac{\lambda}{\sqrt{1 + \left(y^{\prime}\right)^2}} = c \\
+  %     & \left(c は定数\right)\\
+  %   \end{split}
+  % \end{equation}
+  % となる。
+  % よって、(\ref{equation:2_3_2})式が成り立つことを示せた。
+
+  \item 媒介変数による微分の公式を用いて、
+  \begin{equation}\label{equation:2_4_a_1}
+    \begin{split}
+      & \frac{dy}{dx} = \frac{\frac{dy}{dt}}{\frac{dx}{dt}} \\
+      \Leftrightarrow & \frac{dx}{dt} = \frac{dx}{dy} \frac{dy}{dt} \\
+      \Leftrightarrow & \frac{dx}{dt} = \frac{1}{\frac{dy}{dx}} \frac{dy}{dt} \\
+    \end{split}
+  \end{equation}
+  ここで、
+  \begin{equation}\label{equation:2_4_a_2}
+    y^{\prime} = \frac{dy}{dx} = \sinh t
+  \end{equation}
+  と変数変換すると、
+  \begin{equation}\label{equation:2_4_a_3}
+    \begin{split}
+      & \frac{dx}{dt} = \frac{1}{\sinh t} \frac{dy}{dt} \\
+    \end{split}
+  \end{equation}
+  となる。\\
+  \(\frac{dy}{dt}\)を求めるために、(\ref{equation:2_3_2})式を変換すると、
+  \begin{equation}\label{equation:2_4_a_4}
+    \begin{split}
+      & \rho g \frac{y}{\sqrt{1 + \left(y^{\prime}\right)^2}} - \frac{\lambda}{\sqrt{1 + \left(y^{\prime}\right)^2}} = c \\
+      \Leftrightarrow & y = \frac{\lambda}{\rho g} + \frac{c \sqrt{1 + \left(y^{\prime}\right)^2}}{\rho g} = \frac{\lambda}{\rho g} + \frac{c \sqrt{1 + \left(\sinh t\right)^2}}{\rho g}\\
+    \end{split}
+  \end{equation}
+  となる。これより、\(\frac{dy}{dt}\)は
+  \begin{alignat}{2}\label{equation:2_4_a_5}
+    \frac{dy}{dt} &= \frac{c}{\rho g} \left(\sqrt{1 + \left(\sinh{t} \right)^2}\right)^{\prime} & \quad \quad \quad & \notag\\
+    &= \frac{c}{\rho g} \frac{\left(1 + \left(\sinh{t} \right)^2\right)^{\prime}}{2\sqrt{1 + \left(\sinh{t} \right)^2}} & & \notag\\
+    &= \frac{c}{\rho g} \frac{\left(1 + \left(\sinh{t} \right)^2\right)^{\prime}}{2 \sqrt{\cosh^{2}{t}}} & & \left(\because \sinh^{2}{t} + 1 = \cosh^{2}{t}\right) \notag\\
+    &= \frac{c}{\rho g} \frac{2 \sinh{t} \left(\sinh{t}\right)^{\prime}}{2 \cosh{t}} & & \notag\\
+    &= \frac{c}{\rho g} \frac{2 \sinh{t} \cosh{t}}{2 \cosh{t}} & & \left(\because \frac{d}{dt} \sinh{t} = \cosh{t}\right) \notag\\
+    &= \frac{c}{\rho g} \sinh{t} & & \notag \\
+  \end{alignat}
+  (\ref{equation:2_4_a_3})式と(\ref{equation:2_4_a_5})式を用いて、
+  \begin{align}\label{equation:2_4_a_6}
+    \frac{dx}{dt} &= \frac{1}{\sinh t} \frac{dy}{dt} \notag\\
+    &= \frac{1}{\sinh t} \frac{c}{\rho g} \sinh{t} \notag\\
+    &= \frac{c}{\rho g}
+  \end{align}
+  \(\frac{dx}{dt}\)を不定積分すると、
+  \begin{alignat}{2}\label{equation:2_4_a_7}
+    x = \frac{c}{\rho g} t + c_{1} & \quad \quad \quad & \left(c_{1}は積分定数\right)
+  \end{alignat}
+  よって、1つ目の題意を示せた。\\ \\
+
+  (\ref{equation:2_4_a_4})式より、
+  \begin{alignat}{2}\label{equation:2_4_a_8}
+    y &= \frac{\lambda}{\rho g} + \frac{c}{\rho g}\sqrt{1 + \left(\sinh t\right)^2} & \quad \quad \quad & \notag\\
+    &= \frac{\lambda}{\rho g} + \frac{c}{\rho g}\sqrt{\cosh^{2}{t}} & & \left(\because \sinh^{2}{t} + 1 = \cosh^{2}{t}\right) \notag\\
+    &= \frac{\lambda}{\rho g} + \frac{c}{\rho g} \cosh{t} & &
+  \end{alignat}
+  ここで、(\ref{equation:2_4_a_7})式を変形して、
+  \begin{equation}\label{equation:2_4_a_9}
+    x = \frac{c}{\rho g} t + c_{1} \Leftrightarrow t = \frac{\rho g}{c} \left(x - c_{1}\right)
+  \end{equation}
+  となり、(\ref{equation:2_4_a_8})式に代入すると、
+  \begin{equation}
+    y = \frac{\lambda}{\rho g} + \frac{c}{\rho g} \cosh{\left(\frac{\rho g}{c} \left(x - c_{1}\right)\right)}
+  \end{equation}
+  となる。よって、2つ目の題意を示せた。
+
+\end{enumerate}
+
+\newpage
+
+\section{\(R_{n}\)における等式拘束条件付き極値問題} \label{section:3}
+
+\subsection{問題}
+
+この問題では以下の定理を利用して良い。
+
+\begin{description}
+  \item[定理]~\\ \(P\)を\(n \times n\)の対称行列(\(P^{T} = P\)) とし、\(\bm{w} \in R^{n}\)とする。
+  \(P\)のすべての固有値が\(0\)以上であるための必要十分条件は、
+  すべての零ベクトルでない\(\bm{w} \in R^{n}\)に対して
+  \(\bm{w}^{T} P \bm{w} \geq 0\)であることである。
+\end{description}
+
+\(A\)を\(n \times n\)行列とし、\(B = A^{T} A\)とする。
+\(\bm{x}\)を\(\|\bm{x}\|^{2} = 1\)を満足する\(R_{n}\)に
+属するベクトルとし、\(\bm{y} = A \bm{x}\)とする。
+このとき、以下の問に答えなさい。
+
+\begin{enumerate}
+  \item 行列\(B\)が対称行列であることを示しなさい。
+  \item 行列\(B\)のすべての固有値は\(0\)以上であることを示しなさい。
+  \item \(\|\bm{x}\|^{2} = 1\)という拘束条件のもとで、
+  \(\|\bm{y}\|^{2}\)の最大値は行列\(B\)の
+  最大固有値に等しいことを示しなさい。
+  そのときの\(\bm{x}\)は\(B\)の最大固有値に対応するノルムが
+  \(1\)の固有ベクトルであることを示しなさい。
+  また、\(\|\bm{x}\|^{2} = 1\)という拘束条件のもとで、
+  \(\|\bm{y}\|^{2}\)の最小値は行列\(B\)の最小固有値に等しいことを示しなさい。
+  そのときの\(\bm{x}\)は\(B\)の最小固有値対応するノルムが\(1\)の
+  固有ベクトルであることを示しなさい。
+\end{enumerate}
+
+\subsection{回答}
+
+\begin{enumerate}
+  \item 行列\(B\)が対称行列であることを示すために、\(B = B^{T}\)を示す。
+  \begin{equation}\label{equation:3_1_a}
+    B^{T}
+    = \left(A^{T} A\right)^{T}
+    = A^{T} \left(A^{T}\right)^{T}
+    = A^{T} A = B
+  \end{equation}
+  よって、題意を示せた。\\
+
+  \item 行列\(B\)のすべての固有値\(\lambda\)が0以上であることを示すために、
+  すべての零ベクトルでない\(\bm{w} \in R^{n}\)に対して、
+  \(\bm{w}^{T} B \bm{w} \geq 0\)を示す。
+  \begin{equation}\label{equation:3_2_a}
+    \bm{w}^{T} B \bm{w}
+    = \bm{w}^{T} A^{T} A \bm{w}
+    = \left(A \bm{w}\right)^{T} A \bm{w}
+    = \|A \bm{w}\|^{2}
+    \geq 0
+  \end{equation}
+  よって、題意を示せた。\\
+
+  \item \(\bm{y} = A \bm{x}\)より、
+  \begin{equation}\label{equation:3_3_a_1}
+    \|\bm{y}\|^{2}
+    = \|A \bm{x}\|^{2}
+    = \left(A \bm{x}\right)^{T} A \bm{x}
+    = \bm{x}^{T} A^{T} A \bm{x}
+    = \bm{x}^{T} B \bm{x}
+  \end{equation}
+  である。
+  \(\bm{x}^{T} B \bm{x} \)が最大・最小のとき、
+  \(\|\bm{x}\|^{2} = 1\)という拘束条件で、
+  最大固有値・最小固有値を求めるため、
+  \(\bm{x}^{T} B \bm{x}\)を最大化・最小化する。\\
+  ラグランジュの未定乗数\(\lambda\)を導入して、
+  汎関数\(L\left(\bm{x}, B\right)\)を定義すると、
+  \begin{equation}\label{equation:3_3_a_2}
+    L\left(\bm{x}, \lambda\right) = \bm{x}^{T} B \bm{x} - \lambda \left(\bm{x}^{T} \bm{x} - 1\right)
+  \end{equation}
+  である。\\
+  \(\frac{\partial L}{\partial \bm{x}}\)は、
+  \begin{align}\label{equation:3_3_a_3}
+    \frac{\partial L}{\partial \bm{x}}
+    &= \frac{\partial}{\partial \bm{x}} \bm{x}^{T} B \bm{x} - \frac{\partial}{\partial \bm{x}} \lambda \left(\bm{x}^{T} \bm{x} - 1\right) \notag\\
+    &= 2 \bm{x}^{T} B - 2 \lambda \bm{x}^{T}
+  \end{align}
+  \(\frac{\partial L}{\partial \bm{x}} = 0\)を求めると、
+  \begin{align}\label{equation:3_3_a_4}
+    & 2 \bm{x}^{T} B - 2 \lambda \bm{x}^{T} = 0 \notag\\
+    \Leftrightarrow & \bm{x}^{T} B = \lambda \bm{x}^{T} \notag\\
+    \Leftrightarrow & B \bm{x} = \lambda \bm{x}
+  \end{align}
+  よって、未定乗数\(\lambda\)が行列\(B\)の固有値であり、
+  \(\bm{x}\)がその固有ベクトルであることを示せた。
+  また、固有ベクトル\(\bm{x}\)は\(B \bm{x} = \lambda \bm{x}\)より、
+  \begin{equation}\label{equation:3_3_a_5}
+    \bm{x}^{T} B \bm{x} =  \bm{x}^{T} \lambda \bm{x} = \lambda \|\bm{x}\|^{2}
+  \end{equation}
+  であり、\(\|\bm{x}\|^{2} = 1\)のときのみ、\(\bm{x}^{T} B \bm{x} = \lambda\)が成り立つ。
+  よって、題意が示せた。\\
+
+
+  % \item \(\|\bm{x}\|^{2} = 1\)より、
+  % ベクトル\(\bm{x} \in R^{n}\)は零ベクトルでない。
+  % (\ref{equation:3_2_a})式より、
+  % \begin{equation}\label{equation:3_3_a_1}
+  %   \|\bm{y}\|^{2}
+  %   = \|A \bm{x}\|^{2}
+  %   = \|A\|^{2} \|\bm{x}\|^{2}
+  %   \geq 0
+  % \end{equation}
+  % \(\|\bm{x}\|^{2} = 1\)なので、
+  % \begin{equation}
+  %   \|\bm{y}\|^{2}
+  %   = \|A\|^{2}
+  %   \geq 0
+  % \end{equation}
+  % よって、\(\|\bm{x}\|^{2} = 1\)という拘束条件のもとで、
+  % \(\|\bm{y}\|^{2}\)の最大値は行列\(B\)の
+  % 最大固有値に等しいことを示せた。
+\end{enumerate}
+
+\newpage
+
+\section{チェビシェフ多項式の零点を用いた選点法に基づく多項式近似問題} \label{section:4}
+
+\subsection{問題}
+
+チェビシェフ多項式の零点を用いた選点法に基づく多項式近似問題について考える。
+近似をする関数\(f\left(x\right) \in L_{2\omega} \left[-1,1\right]\)
+は以下の規則に従って与えられる。ただし、重み関数\(\omega \left(x\right)\)は、
+\(\omega \left(x\right) = \frac{1}{\sqrt{1 - x^2}}\)である。
+
+\begin{itemize}
+  \item 自分の学生番号の下2桁を3で割って余りが0の学生は\(f\left(x\right) = e^{\frac{1 - x^2}{2}}\)
+  \item 自分の学生番号の下2桁を3で割って余りが1の学生は\(f\left(x\right) = \log \left(x^2 + 2\right)\)
+  \item 自分の学生番号の下2桁を3で割って余りが2の学生は\(f\left(x\right) = \frac{1}{x^4 + 1}\)
+\end{itemize}
+
+\begin{enumerate}
+  \item 与えられた\(f\left(x\right)\)を5次のチェビチェフ多項式の零点を用いた
+  選点法により決定される多項式\(\hat{f}\left(x\right)\)で近似しなさい。
+  \item 近似誤差を\(e_c \left(x\right) = f\left(x\right) - \hat{f}\left(x\right)\)
+  と定義する。\(e_c\)の\(L_{2\omega}\)ノルムを求めなさい。
+  さらに、\(e_c\left(x\right)\)のグラフ\(-1 \leq x \leq 1\)を描き、
+  区間\(-1 \leq x \leq 1\)における近似誤差について考察しなさい。
+
+\end{enumerate}
+
+\subsection{回答}
+
+学生番号が「52121322」であるので、\(f\left(x\right) = \log \left(x^{2} + 2\right)\)を近似をする関数に選ぶ。
+
+\begin{enumerate}
+  \item チェビシェフ多項式は
+  \begin{equation}\label{equation:4_1_a_1}
+    T_{n} \left(x\right) = \frac{\left(-1\right)^{n}}{\left(2n -1\right)!!}
+    \sqrt{1 - x^{2}} \frac{d^{n}}{dx^{n}} \left(1 - x^{2}\right)^{n - \frac{1}{2}}
+  \end{equation}
+  であり、
+  \begin{align}\label{equation:4_1_a_2}
+    & T_{0}\left(x\right) = 1 \notag \\
+    & T_{1}\left(x\right) = x \notag \\
+    & T_{n + 1}\left(x\right)
+    = 2 x T_{n} \left(x\right) - T_{n - 1}\left(x\right)
+  \end{align}
+  という漸化式を満足する。\\
+  この漸化式を用いて、5次までのチェビシェフ多項式を作る。
+  \begin{align}\label{equation:4_1_a_3}
+    & T_{0} = 1 \notag \\
+    & T_{1} = x \notag \\
+    & T_{2} = 2  x^{2} - 1 \notag \\
+    & T_{3} = 4  x^{3} - 3  x \notag \\
+    & T_{4} = 8  x^{4} - 8  x^{2} + 1 \notag \\
+    & T_{5} = 16 x^{5} - 20 x^{3} + 5x
+  \end{align}
+  このチェビシェフ多項式から、\(L_{2 \omega} \left[-1,1\right]\)の完全正規多項式
+  \(\left\{\bm{u}\right\}^{\infty}_{n = 0}\)の\(n = 0, 1, 2, 3, 4, 5\)を作る。
+  重み関数\(\omega \left(x\right)\)は
+  \(\omega \left(x\right) = \frac{1}{\sqrt{1 - x^{2}}}\)とする。
+  \begin{align}\label{equation:4_1_a_4}
+    & \bm{u}_{0} \left(x\right) = \frac{1}{\sqrt{\pi}} T_{0} \left(x\right) = \frac{1}{\sqrt{\pi}} \notag \\
+    & \bm{u}_{1} \left(x\right) = \sqrt{\frac{2}{\pi}} T_{1} \left(x\right) = \sqrt{\frac{2}{\pi}} x \notag \\
+    & \bm{u}_{2} \left(x\right) = \sqrt{\frac{2}{\pi}} T_{2} \left(x\right) = \sqrt{\frac{2}{\pi}} \left(2 x^{2} - 1\right) \notag \\
+    & \bm{u}_{3} \left(x\right) = \sqrt{\frac{2}{\pi}} T_{3} \left(x\right) = \sqrt{\frac{2}{\pi}} \left(4 x^{3} - 3 x\right) \notag \\
+    & \bm{u}_{4} \left(x\right) = \sqrt{\frac{2}{\pi}} T_{4} \left(x\right) = \sqrt{\frac{2}{\pi}} \left(8  x^{4} - 8  x^{2} + 1\right) \notag \\
+    & \bm{u}_{5} \left(x\right) = \sqrt{\frac{2}{\pi}} T_{5} \left(x\right) = \sqrt{\frac{2}{\pi}} \left(16 x^{5} - 20 x^{3} + 5x\right)
+  \end{align}
+  完全正規多項式\(\left\{\bm{u}\right\}^{\infty}_{n = 0}\)の零点
+  \(z_{0}, z_{1}, z_{2}, z_{3}, z_{4}\)を数式処理ソフトウェア\(maxima\)を用いて求める。
+  出力結果より、零点\(z_{0}, z_{1}, z_{2}, z_{3}, z_{4}\)は
+  \begin{align}\label{equation:4_1_a_5}
+    z_{0} &= -\frac{\sqrt{\sqrt{5}+5}}{{{2}^{\frac{3}{2}}}} = -0.9510565162951534 \notag \\
+    z_{1} &=  \frac{\sqrt{\sqrt{5}+5}}{{{2}^{\frac{3}{2}}}} =  0.9510565162951534 \notag \\
+    z_{2} &= -\frac{\sqrt{5-\sqrt{5}}}{{{2}^{\frac{3}{2}}}} = -0.5877852522924729 \notag \\
+    z_{3} &=  \frac{\sqrt{5-\sqrt{5}}}{{{2}^{\frac{3}{2}}}} =  0.5877852522924729 \notag \\
+    z_{4} &=  0.0
+  \end{align}
+  である。\\
+  求めた零点\(z_{0}, z_{1}, z_{2}, z_{3}, z_{4}\)に対して、
+  \begin{equation}\label{equation:4_1_a_6}
+    e\left(z_{i}\right) = 0 \quad \left(i = 0,1,2,\cdots,n\right)
+  \end{equation}
+  を満足する、すなわち、
+  \begin{equation}\label{equation:4_1_a_7}
+    \sum^{n}_{k=0} a_{k} \bm{u}_{k} \left(z_{i}\right) = f\left(z_{i}\right) \quad
+    \left(i = 0,1,2,\cdots,n\right)
+  \end{equation}
+  を満足するように未定の定数\(a_{1}, a_{2}, \cdots, a_{n}\)を決定する。
+  (\ref{equation:4_1_a_7})式を連立方程式に変換すると、
+  \begin{equation}\label{equation:4_1_a_8}
+    \begin{cases}
+      a_{0} \bm{u}_{0}(z_{0}) + a_{1} \bm{u}_{1}(z_{0}) + \cdots + a_{n} \bm{u}_{n}(z_{0}) = f(z_{0}) \\
+      a_{0} \bm{u}_{0}(z_{1}) + a_{1} \bm{u}_{1}(z_{1}) + \cdots + a_{n} \bm{u}_{n}(z_{1}) = f(z_{1}) \\
+      \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad \vdots \\
+      a_{0} \bm{u}_{0}(z_{n}) + a_{1} \bm{u}_{1}(z_{n}) + \cdots + a_{n} \bm{u}_{n}(z_{n}) = f(z_{n}) \\
+    \end{cases}
+  \end{equation}
+  ここで、この連立方程式を行列に置き換える。
+  \begin{align}\label{equation:4_1_a_9}
+    A = \begin{pmatrix}
+      \bm{u}_{0}(z_{0}) & \bm{u}_{1}(z_{0}) & \cdots & \bm{u}_{n}(z_{0}) \\
+      \bm{u}_{0}(z_{1}) & \bm{u}_{1}(z_{1}) & \cdots & \bm{u}_{n}(z_{1}) \\
+      \vdots            & \vdots            & \ddots & \vdots            \\
+      \bm{u}_{0}(z_{n}) & \bm{u}_{1}(z_{n}) & \cdots & \bm{u}_{n}(z_{n})
+    \end{pmatrix}
+    , & &
+    \bm{x} = \begin{pmatrix}
+      a_{0} \\ a_{1} \\ \vdots \\ a_{n}
+    \end{pmatrix}
+    , & &
+    \bm{b} = \begin{pmatrix}
+      f(z_0) \\ f(z_1) \\ \vdots \\ f(z_n)
+    \end{pmatrix}
+  \end{align}
+  このとき、(\ref{equation:4_1_a_7})式は
+  \begin{equation}\label{equation:4_1_a_10}
+    A \bm{x} = \bm{b}
+  \end{equation}
+  と表せる。
+  \(\bm{u}_{0}, \bm{u}_{1}, \bm{u}_{n}\)は区間\(\left[-1, 1\right]\)
+  で互いに線形独立なので、\(|A| \neq 0\)である。
+  つまり、(\ref{equation:4_1_a_10})式の連立方程式\(A \bm{x} = \bm{b}\)
+  は唯一の解\(\bm{x} = A^{-1} \bm{b}\)を持つ。\\
+  \(\bm{x}\)を求めるため、\(maxima\)で行列\(A\)とベクトル\(\bm{b}\)の
+  値を算出する。
+
+  \begin{equation}
+    {
+      \tiny
+      A = \begin{pmatrix}
+        0.5641895835477563 & -0.7588333108028616 & 0.6455021692389087 & -0.4689847778717805 & 0.2465598888374751\\
+        0.5641895835477563 & 0.7588333108028616 & 0.6455021692389087 & 0.4689847778717805 & 0.2465598888374751\\
+        0.5641895835477563 & -0.4689847778717812 & -0.2465598888374768 & 0.7588333108028621 & -0.6455021692389088\\
+        0.5641895835477563 & 0.4689847778717812 & -0.2465598888374768 & -0.7588333108028621 & -0.6455021692389088\\
+        0.5641895835477563 & 0.0 & -0.7978845608028654 & 0.0 & 0.7978845608028654
+      \end{pmatrix}
+    }
+  \end{equation}
+
+  \begin{equation}
+    {
+      \tiny
+      \bm{b} = \begin{pmatrix}
+        1.066264183971209 & 1.066264183971209 & 0.8524949760181532 & 0.8524949760181532 & 0.6931471805599453
+      \end{pmatrix}
+    }
+  \end{equation}
+
+  これより、\(\bm{x} = A^{-1} \bm{b}\)を\(maxima\)で求める。
+  \begin{equation}
+    \bm{x} = \begin{pmatrix}
+      1.606079102718907\\
+      0.0\\
+      0.2532865853005147\\
+      -1.050019021388809 \cdot {{10}^{-16}}\\
+      -0.01365167871787071
+    \end{pmatrix}
+    \simeq \begin{pmatrix}
+      1.606079102718907\\
+      0.0\\
+      0.2532865853005147\\
+      0.0\\
+      -0.01365167871787071
+    \end{pmatrix}
+  \end{equation}
+  よって、近似関数は
+  \begin{equation}
+    \begin{split}
+      \hat{f}\left(x\right)
+      =& 1.606079102718907    \cdot \bm{u}_{0}\left(x\right) + 0.0 \cdot \bm{u}_{1}\left(x\right)\\
+      &+ 0.2532865853005147   \cdot \bm{u}_{2}\left(x\right) + 0.0 \cdot \bm{u}_{3}\left(x\right)
+       - 0.01365167871787071  \cdot \bm{u}_{4}\left(x\right)\\
+      =& 1.606079102718907    \cdot \bm{u}_{0}\left(x\right)
+       + 0.2532865853005147   \cdot \bm{u}_{2}\left(x\right)\\
+      &- 0.01365167871787071  \cdot \bm{u}_{4}\left(x\right)\\
+      =& -0.08883698847953755 {{x}^{4}}+0.4982243501897492 {{x}^{2}}+0.6931471805599454
+    \end{split}
+  \end{equation}
+
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=80mm]{./image/kadai1.png}
+    \caption{ターゲット関数と近似関数の比較}
+    \label{figure:4_1_a}
+  \end{figure}
+
+  \item 近似誤差を
+  \begin{equation}
+    e_{c}\left(x\right) = f\left(x\right) - \hat{f}\left(x\right)
+  \end{equation}
+  と定義すると、\(e_{c}\left(x\right)\)の\(L_{2\omega}\)ノルムは
+  \begin{align}
+      \|e_{c}\left(x\right)\|
+      &= \sqrt{\left<e_{c}\left(x\right), e_{c}\left(x\right)\right>}\notag\\
+      &= \sqrt{\int^{1}_{-1} \omega\left(x\right) e_{c}\left(x\right)^{2} dx}
+      &= \sqrt{\int^{1}_{-1} \frac{1}{\sqrt{1 - x^{2}}} \left(f\left(x\right) - \hat{f}\left(x\right) \right)^{2} dx}
+  \end{align}
+  この式を\(maxima\)で算出する。
+  \begin{equation}
+    \|e_{c}\left(x\right)\| = 0.001221761613102146
+  \end{equation}
+
+  また、\(e_c\left(x\right)\)のグラフ\(-1 \leq x \leq 1\)を描く。
+
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=80mm]{./image/kadai4_2.png}
+    \caption{区間[-1,1]における近似誤差}
+    \label{figure:4_2_a}
+  \end{figure}
+
+  考察として、区間\(-1 \leq x \leq 1\)における近似誤差について、
+  \(x\)の値が\(0\)から離れるにつれて、誤差が大きくなる。
+  しかし、区間\(-1 < x < 1\)では大きくて\(0.001\)ほどの誤差しか発生しないので、
+  十分に誤差が小さいといえる。
+
+%   \newpage
+
+%   \begin{lstlisting}[caption={4-(1)で使用したmaximaコード},label={code:kadai4_1}]
+% /* 完全正規多項式の定義 */
+% u0(x):=float(1/sqrt(%pi))$
+% u1(x):=float(sqrt(2/%pi)*x)$
+% u2(x):=float(sqrt(2/%pi)*(2*x^2-1))$
+% u3(x):=float(sqrt(2/%pi)*(4*x^3-3*x))$
+% u4(x):=float(sqrt(2/%pi)*(8*x^4-8*x^2+1))$
+% u5(x):=sqrt(2/%pi)*(16*x^5-20*x^3+5*x)$
+% /* 近似する関数の定義 */
+% fa(x):=float(log(x^2+2))$
+
+% /* 零点の算出 */
+% z:solve(u5(t),t)$
+% for i thru 5 do (
+%     print("z[", i, "] = ", rhs(z[i]), " = ", float(rhs(z[i]))),
+%     z[i]:float(rhs(z[i]))
+% )$
+
+% /* 行列Aの定義 */
+% A:matrix(
+%     [u0(z[1]),u1(z[1]),u2(z[1]),u3(z[1]),u4(z[1])],
+%     [u0(z[2]),u1(z[2]),u2(z[2]),u3(z[2]),u4(z[2])],
+%     [u0(z[3]),u1(z[3]),u2(z[3]),u3(z[3]),u4(z[3])],
+%     [u0(z[4]),u1(z[4]),u2(z[4]),u3(z[4]),u4(z[4])],
+%     [u0(z[5]),u1(z[5]),u2(z[5]),u3(z[5]),u4(z[5])]
+% )$
+% /* ベクトルbの定義 */
+% b:matrix(
+%     [fa(z[1]),fa(z[2]),fa(z[3]),fa(z[4]),fa(z[5])]
+% )$
+
+% /* Ax=b の解xの算出 */
+% c:invert(A).b$
+% /* 近似多項式の定義 */
+% fb(x):=1.606079102718907*u0(x)+0.2532865853005147*u2(x)-0.01365167871787071*u4(x)$
+
+% /* 行列A、ベクトルb、解xの表示 */
+% print("A = ", A)$
+% print("b = ", b)$
+% print("x = ", c)$
+% print("fb(x) = " , fb(x), " = ", expand(fb(x)))$
+
+% /* 指定した関数と近似多項式を表示 */
+% plot2d([fa(x),fb(x)], [x,-1.0,1.0],
+%     [legend, "Target function", "Approximate function"],
+%     [xlabel, "x"],
+%     [ylabel, "f(x)"])$
+%   \end{lstlisting}
+
+%   \begin{lstlisting}[caption={4-(2)で使用したmaximaコード},label={code:kadai4_2}]
+% /* 誤差を算出 */
+% ec(x):=fa(x)-fb(x)$
+% omega(x):=1.0/sqrt(1.0-x^2)$
+% sq:quad_qags(omega(x)*(ec(x)^2),x,-1.0,1.0)$
+% nr:sqrt(sq[1])$
+
+% /* 誤差の表示 */
+% print("norm = ", nr)$
+
+% /* 誤差をグラフ化 */
+% plot2d([ec(x)], [x,-1.0,1.0],
+%     [xlabel, "x"],
+%     [ylabel, "e_c(x)"])$
+%   \end{lstlisting}
+
+\end{enumerate}
