@@ -1,62 +1,59 @@
 # Report Template
 
-## Features
+Template of Report by LaTeX.
 
-Template of report by LaTeX.
 
-## Demo
+## 🏯 ビルド / Build
 
-## Usage
+### 🍊 Makefile
 
-### Makefile
-
-|Command|Feature                            |
-|:--:|:--:|
-|default|View help for Makefile.            |
-|all    |View a PDF file.                   |
-|view   |View a PDF file.                   |
-|build  |Generate a PDF file from TeX files.|
-|clean  |Remove generated files.            |
-|rebuild|Regenerate a PDF file.             |
-|help   |View help for Makefile.            |
-
-```zsh
-# Generate a PDF file from TeX files.
+```bash
+# Rebuild all & Remove a part of generated files.
+make all
+# Build all
 make build
-
-# View a PDF file.
-make view
-
-# View help for Makefile.
+# Rebuild all.
+make rebuild
+# Print debug messages after building.
+make debug
+# View PDF/PostScript file.
+make preview
+# Remove a part of generated files.
+make clean
+# Remove all generated files.
+make distclean
+# Print help.
 make help
 ```
 
-### GitHub Actions
+### 🍌 Latexmk
 
-```zsh
-# Registry a location of remote repository.
-git remote add origin git@github.com:[username]/[repository].git
-
-# Label tag name.
-git tag [tag_name(cf: v1.0.0)]
-
-# Push tag to remote repository.
-git push origin [tag_name]
-
-# Release a PDF file in GitHub Releases.
+```bash
+# Build all.
+latexmk
+# Remove all generated files.
+latexmk -C
+# View PDF file, compiling when the files changed.
+latexmk -pvc
 ```
 
-## Note
+### 🥝 GitHub Actions
 
-Good luck!!!
+After pushing tag to remote repository,
+GitHub Actions compiles this documents,
+and releases it to GitHub Releases Page.
 
-## Author
+```bash
+# Add a tag.
+git tag -a v0.0.0 -m 'tag comment'
+# Share a tag.
+git push origin v0.0.0
+```
 
-* k5-mot
 
-## License
+## 🍋 License / ライセンス
 
-Copyright (c) 2021 k5-mot All Rights Reserved.
+Copyright (c) 2021-2022 k5-mot All Rights Reserved.
 
-"k5-mot/report_template" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
+"k5-mot/report-template" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
 
